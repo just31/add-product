@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="ru" ng-app>
+    <head>
+        <title>Форма добавления продуктов</title>
+        <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <!--Bootstrap3-->
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    </head>
+    <body>
+      <div class="main">
+
+      <h1 class="main__title">Форма добавления продуктов</h1>
+
+        <div class="container" ng-controller="InvoiceCntl">
+
+            <form id="product" name="product" action="/add_product" method="POST" enctype="multipart/form-data">
+                <!-- Form Name -->
+                <legend>Добавить продукт</legend>
+
+                <!-- Text input-->
+                <div class="control-group" id="control-group__name">
+                    <label class="control-label" for="name">Наименование <b>*</b></label>
+                    <div class="controls">
+                        <input id="name" name="name" type="text" value="" placeholder="">
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="control-group" id="control-group__number">
+                    <label class="control-label" for="number">Количество кг <b>*</b></label>
+                    <div class="controls">
+                        <input id="number" name="number" type="number" ng-pattern="/\d+/" ng-model="qty" placeholder="0">
+
+                    </div>
+                </div>
+
+                <div class="control-group" id="control-group__cost">
+                    <label class="control-label" for="cost">Стоимость &#8381; <b>*</b></label>
+                    <div class="controls">
+                        <input id="cost" name="cost" type="number" ng-pattern="/\d+/" ng-model="cost" placeholder="0.00">
+
+                    </div>
+                </div>
+
+                <!-- Textarea -->
+                <div class="control-group" id="control-group__more-information">
+                    <label class="control-label" for="more_information">Дополнительные сведения:</label>
+                    <div class="controls">
+                        <textarea id="more_information" name="more_information"></textarea>
+                    </div>
+                </div>
+
+                <!-- File Button -->
+                <div class="control-group" id="control-group__add-foto">
+                    <div class="controls clearfix">
+                        <span class="btn btn-warning btn-file">
+                            <i class="ico-moon-plus"> </i><span>Прикрепить фото продукта...</span>
+                            <input type="file" name="image" id="image" onchange='document.getElementById("fileName").value=this.value' />
+                        </span>
+                    </div>
+                    <div class="type_file">
+                        <input class="inputFileVal" readonly="readonly" id="fileName" name="fileName" type="text" />
+                    </div>
+                </div>
+
+                <!-- Button -->
+                <div class="control-group" id="control-group__add-submit">
+                    <label class="control-label" for="add-submit"></label>
+                        <div class="controls">
+                            <button id="add-submit" name="add-submit" class="btn btn-success">Добавить продукт</button>
+                        </div>
+                </div>
+            </form>
+
+            <div class="cost-main">
+                <b>Общая стоимость:</b> {{qty * cost | currency: ' RUB ' }}
+            </div>
+
+            <div class="list-product">
+                <a href="list_products.php" target="_blanс">Посмотреть список продуктов</a>
+            </div>
+
+        </div>
+      </div>
+        <script src="http://code.angularjs.org/1.0.6/angular.min.js"></script>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script src="js/add_product.js"></script>
+    </body>
+</html>
