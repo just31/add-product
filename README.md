@@ -1,7 +1,7 @@
 # add-product
 Простая панель администраторирования в которой можно добавлять продукты. 
 
-Используемые технологии:  jQuery, Bootstrap, PHP, MySQL, Angular.
+Используемые технологии:  jQuery, Ajax, Bootstrap, PHP, MySQL, Angular.
 
 Приложение содержит:
 
